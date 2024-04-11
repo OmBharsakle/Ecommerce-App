@@ -16,6 +16,7 @@ class _EcommerceAppState extends State<EcommerceApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: MyAppBar(),
         body: MyAppBar(),
       ),
     );
