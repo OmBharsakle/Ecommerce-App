@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'home/screen/app_bar.dart';
 void main() {
   runApp(EcommerceApp());
 }
@@ -16,7 +15,9 @@ class _EcommerceAppState extends State<EcommerceApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: MyAppBar(),
+        body: Column(
+
+        ),
       ),
     );
   }
