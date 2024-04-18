@@ -7,14 +7,14 @@ import 'package:badges/badges.dart' as badges;
 
 import 'home_screen.dart';
 
-class Products_details_Page extends StatefulWidget {
-  const Products_details_Page({super.key});
+class Fav_Page extends StatefulWidget {
+  const Fav_Page({super.key});
 
   @override
-  State<Products_details_Page> createState() => _Products_details_PageState();
+  State<Fav_Page> createState() => _Fav_PageState();
 }
 
-class _Products_details_PageState extends State<Products_details_Page> {
+class _Fav_PageState extends State<Fav_Page> {
   @override
   Widget build(BuildContext context) {
     var index = ModalRoute.of(context)!.settings.arguments as int;
@@ -25,7 +25,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
         height: double.infinity,
         decoration: BoxDecoration(
           gradient:
-              RadialGradient(center: Alignment.topRight, radius: 1, colors: [
+          RadialGradient(center: Alignment.topRight, radius: 1, colors: [
             Color(0xff32343b),
             Color(0xff1c1e22),
           ]),
@@ -71,14 +71,14 @@ class _Products_details_PageState extends State<Products_details_Page> {
                         },
                         child: badges.Badge(
                           badgeContent: Text(
-                            '${AddToCard.length}',
+                            '0',
                             style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 14,
-                              letterSpacing: 1,
-                            )),
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  letterSpacing: 1,
+                                )),
                           ),
                           child: Icon(
                             Icons.shopping_bag_outlined,
@@ -97,10 +97,10 @@ class _Products_details_PageState extends State<Products_details_Page> {
                 width: 300,
                 margin: EdgeInsets.only(bottom: 50),
                 decoration: BoxDecoration(
-                    // color: Colors.white,
+                  // color: Colors.white,
                     image: DecorationImage(
                         alignment: Alignment.center,
-                        image: AssetImage(ProductData[index]['link']),
+                        image: AssetImage(BookMark[index]['link']),
                         fit: BoxFit.contain)),
               ),
             ),
@@ -131,7 +131,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(ProductData[index]['name'],
+                    Text(BookMark[index]['name'],
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontFamily: 'cashDisplay',
@@ -146,7 +146,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$${ProductData[index]['price']}',
+                          '\$${BookMark[index]['price']}',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -190,11 +190,11 @@ class _Products_details_PageState extends State<Products_details_Page> {
                               '${ProductData[index]['quantity']}',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                fontSize: 22,
-                                letterSpacing: 1,
-                              )),
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    letterSpacing: 1,
+                                  )),
                             ),
                             InkWell(
                               onTap: () {
@@ -244,19 +244,19 @@ class _Products_details_PageState extends State<Products_details_Page> {
                           ' 4.5',
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                            fontSize: 18,
-                          )),
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize: 18,
+                              )),
                         ),
                         Text(
                           ' (500 reviews)',
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white38,
-                            fontSize: 15,
-                          )),
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white38,
+                                fontSize: 15,
+                              )),
                         ),
                       ],
                     ),
@@ -267,7 +267,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                       ProductData[index]['description'],
                       style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              // overflow: TextOverflow.clip,
+                            // overflow: TextOverflow.clip,
                               fontWeight: FontWeight.w500,
                               color: Colors.white54,
                               fontSize: 15,
@@ -290,7 +290,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border:
-                                  Border.all(color: Colors.white38, width: 2),
+                              Border.all(color: Colors.white38, width: 2),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -328,7 +328,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                               int i = 0;
                               do {
                                 if (ProductData[index]['id'] ==
-                                    CheckAddToCard[i]['id']) {
+                                    AddToCard[i]['id']) {
                                   check = false;
                                   print('All Ready $i');
                                 } else {
@@ -336,10 +336,9 @@ class _Products_details_PageState extends State<Products_details_Page> {
                                   print('All Ready not $i');
                                 }
                                 i++;
-                              } while (i < CheckAddToCard.length);
+                              } while (i<AddToCard.length);
                               if (check) {
                                 AddToCard.add(ProductData[index]);
-                                CheckAddToCard.add(ProductData[index]);
                               }
                             });
                           },
@@ -349,7 +348,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border:
-                                  Border.all(color: Colors.white38, width: 2),
+                              Border.all(color: Colors.white38, width: 2),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -384,4 +383,4 @@ class _Products_details_PageState extends State<Products_details_Page> {
 }
 
 int productquantity = 1;
-bool check = false;
+bool check=false;
