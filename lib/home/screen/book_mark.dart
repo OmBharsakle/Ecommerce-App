@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
+import 'extra.dart';
 import 'home/screen/home_screen.dart';
 
 import '../components/product_list.dart';
@@ -124,7 +125,7 @@ class _Book_MarkState extends State<Book_Mark> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image:
-                        AssetImage(BookMark[index]['link']),
+                        AssetImage(ProductData[BookMarked[index]]['link']),
                         fit: BoxFit.contain))
             ),
             Padding(
@@ -133,7 +134,7 @@ class _Book_MarkState extends State<Book_Mark> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(BookMark[index]['name'],style: TextStyle(
+                  Text(ProductData[BookMarked[index]]['name'],style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontFamily: 'cashDisplay',
                     color: Colors.white,
@@ -142,7 +143,7 @@ class _Book_MarkState extends State<Book_Mark> {
                   ),),
                   SizedBox(height: 7,),
                   Text(
-                    '\$${BookMark[index]['price']}' ,
+                    '\$${ProductData[BookMarked[index]]['price']}' ,
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -167,21 +168,13 @@ class _Book_MarkState extends State<Book_Mark> {
                     ),
                     child: InkWell(onTap: () {
                       setState(() {
-                        int i = 0;
-                        do {
-                          if (ProductData[index]['id'] ==
-                              CheckAddToCard[i]['id']) {
-                            check = false;
-                            print('All Ready $i');
-                          } else {
-                            check = true;
-                            print('All Ready not $i');
-                          }
-                          i++;
-                        } while (i < CheckAddToCard.length);
-                        if (check) {
+                        if (ProductData[index]["check"]) {
+                          ProductData[index]["check"]=false;
                           AddToCard.add(ProductData[index]);
-                          CheckAddToCard.add(ProductData[index]);
+                          showCustomToast(context,Icons.shopping_cart_outlined,'Product Added Successfully');
+                        }
+                        else{
+                          showCustomToast(context,Icons.shopping_cart_outlined,'Product All Ready Added');
                         }
                       });
                     },

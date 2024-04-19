@@ -6,7 +6,8 @@ List ProductData = [
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
     "quantity": 1,
     "link": "assets/image/01.png",
-    "fav": false,
+    "fav": true,
+    "check" : true,
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@ List ProductData = [
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
     "quantity": 1,
     "link": "assets/image/04.png",
-    "fav": false,
+    "fav": true,
+    "check" : true,
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@ List ProductData = [
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
     "quantity": 1,
     "link": "assets/image/08.png",
-  "fav": false,
+  "fav": true,
+    "check" : true,
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@ List ProductData = [
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
     "quantity": 1,
     "link": "assets/image/07.png",
-  "fav": false,
+  "fav": true,
+    "check" : true,
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@ List ProductData = [
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
     "quantity": 1,
     "link": "assets/image/05.png",
-  "fav": false,
+  "fav": true,
+    "check" : true,
   },
   {
     "id": 6,
@@ -51,31 +56,11 @@ List ProductData = [
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
     "quantity": 1,
     "link": "assets/image/02.png",
-  "fav": false,
+  "fav": true,
+    "check" : true,
   },
 ];
 
 List AddToCard = [];
-List CheckAddToCard = [
-  {
-    "id": 0,
-    "name": "Nikon D850",
-    "price": 30000,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
-    "quantity": 1,
-    "link": "assets/image/02.png",
-    "fav": true,
-  },
-];
-List BookMark = [];
-List CheckBookMark = [
-  {
-    "id": 0,
-    "name": "Nikon D850",
-    "price": 30000,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis tellus, est lacus arcu ut ac in fermentum. Sit eget proin nunc felis quam rutrum metus. Et lacus, maecenas vel et arcu ut adipiscing morbi eget. At arcu varius ullamcorper eu varius. Et lacus, maecenas vel et arcu ut adipiscing morbi eget.",
-    "quantity": 1,
-    "link": "assets/image/02.png",
-    "fav": true,
-  },
-];
+List BookMark = List.generate(ProductData.length, (index) => false);
+List BookMarked = [];

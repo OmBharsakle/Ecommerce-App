@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 
+import 'extra.dart';
 import 'home_screen.dart';
 
 class Products_details_Page extends StatefulWidget {
@@ -45,7 +46,9 @@ class _Products_details_PageState extends State<Products_details_Page> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pop();
+                        setState(() {
+                          Navigator.of(context).pop();
+                        });
                       },
                       child: Icon(
                         Icons.arrow_back_ios_rounded,
@@ -110,9 +113,9 @@ class _Products_details_PageState extends State<Products_details_Page> {
               height: 435,
               decoration: BoxDecoration(
                   border: Border(
-                      top: BorderSide(color: Colors.white38, width: 3),
-                      left: BorderSide(color: Colors.white38, width: 3),
-                      right: BorderSide(color: Colors.white38, width: 3)),
+                      top: BorderSide(color: Colors.white38, width: 1),
+                      left: BorderSide(color: Colors.white38, width: 1),
+                      right: BorderSide(color: Colors.white38, width: 1)),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40)),
@@ -152,7 +155,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                               fontSize: 22,
-                              letterSpacing: 1,
+                              letterSpacing: 1.5,
                             ),
                           ),
                         ),
@@ -290,7 +293,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border:
-                                  Border.all(color: Colors.white38, width: 2),
+                                  Border.all(color: Colors.white38, width: 1),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -311,35 +314,13 @@ class _Products_details_PageState extends State<Products_details_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              // AddToCard.add(ProductData[index]);
-                              // for (int i = 0; i < AddToCard.length; i++) {
-                              //   if (ProductData[index]['id'] ==
-                              //       AddToCard[i]['id']) {
-                              //     check = false;
-                              //     print('All Ready $i');
-                              //   } else {
-                              //     check = true;
-                              //     print('All Ready not $i');
-                              //   }
-                              // }
-                              // if (check) {
-                              //   AddToCard.add(ProductData[index]);
-                              // }
-                              int i = 0;
-                              do {
-                                if (ProductData[index]['id'] ==
-                                    CheckAddToCard[i]['id']) {
-                                  check = false;
-                                  print('All Ready $i');
-                                } else {
-                                  check = true;
-                                  print('All Ready not $i');
-                                }
-                                i++;
-                              } while (i < CheckAddToCard.length);
-                              if (check) {
+                              if (ProductData[index]["check"]) {
+                                ProductData[index]["check"]=false;
                                 AddToCard.add(ProductData[index]);
-                                CheckAddToCard.add(ProductData[index]);
+                                showCustomToast(context,Icons.shopping_cart_outlined,'Product Added Successfully');
+                              }
+                              else{
+                                showCustomToast(context,Icons.shopping_cart_outlined,'Product All Ready Added');
                               }
                             });
                           },
@@ -349,7 +330,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border:
-                                  Border.all(color: Colors.white38, width: 2),
+                                  Border.all(color: Colors.white38, width: 1),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -384,4 +365,3 @@ class _Products_details_PageState extends State<Products_details_Page> {
 }
 
 int productquantity = 1;
-bool check = false;

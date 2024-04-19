@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 import '../components/product_list.dart';
 import 'add_to_card.dart';
+import 'extra.dart';
 import 'favdeaital.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -17,7 +20,6 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
   int badgescount = AddToCard.length;
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -108,7 +110,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                         color: Colors.white,
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(18),
                       ),
                     ),
                   ),
@@ -122,8 +124,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                   width: double.infinity,
                   height: 200,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.white38, width: 2),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.white38, width: 1),
                       gradient: LinearGradient(colors: [
                         Color(0xff484C57),
                         Color(0xff1D1F23),
@@ -152,20 +154,16 @@ class _Home_ScreenState extends State<Home_Screen> {
                             ),
                             InkWell(
                               onTap: () {
-                                setState(() {
-                                  // int index=6;
-                                  Navigator.of(context)
-                                      .pushNamed('/product',);
-                                });
+                                Navigator.of(context).pushNamed('/try');
                               },
                               child: Container(
                                 margin: EdgeInsets.only(top: 25),
                                 width: 120,
                                 height: 40,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(18),
                                   border: Border.all(
-                                      color: Colors.white38, width: 2),
+                                      color: Colors.white38, width: 1),
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0xff32343b),
@@ -205,10 +203,13 @@ class _Home_ScreenState extends State<Home_Screen> {
                     ],
                   ),
                 ),
-                Divider(
-                  height: 40,
-                  color: Colors.white38,
-                  thickness: 3,
+                // Divider(
+                //   height: 40,
+                //   color: Colors.white38,
+                //   thickness: 1,
+                // ),
+                SizedBox(
+                  height: 10,
                 ),
                 Text(
                   'Popular',
@@ -220,10 +221,11 @@ class _Home_ScreenState extends State<Home_Screen> {
                     letterSpacing: 2,
                   )),
                 ),
+                // SizedBox(height: 15,),
                 Divider(
                   height: 35,
                   color: Colors.white38,
-                  thickness: 3,
+                  thickness: 1,
                 ),
                 Center(
                   child: Wrap(
@@ -252,13 +254,13 @@ class _Home_ScreenState extends State<Home_Screen> {
   Container ProductContainer(int index) {
     return Container(
       width: 175,
-      height: 305,
+      height: 290,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white38, width: 1.5),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: Colors.white38, width: 1),
         gradient: RadialGradient(
           center: Alignment.topRight,
-          radius: 1,
+          radius: 1.5,
           colors: [
             Color(0xff32343b),
             Color(0xff1c1e22),
@@ -290,23 +292,26 @@ class _Home_ScreenState extends State<Home_Screen> {
                     fontSize: 12,
                   )),
                 ),
-                SizedBox(width: 89,),
+                SizedBox(
+                  width: 89,
+                ),
                 InkWell(
                   onTap: () {
                     setState(() {
-                      isfav = !isfav;
-                      if (isfav) {
-                        ProductData[index]['fav']=true;
-                        BookMark.add(ProductData[index]);
+                      BookMark[index] = !BookMark[index];
+                      if (BookMark[index]) {
+                        // BookMarked.add(index);
+                        showCustomToast(context, Icons.favorite_outlined, 'Product Added Successfully');
+                        BookMarked.add(ProductData[index]);
                       } else {
-                        ProductData[index]['fav']=false;
-                        BookMark.removeAt(index);
+                        BookMarked.remove(index);
+                        BookMarked.remove(index);
+                        showCustomToast(context, Icons.favorite_border, 'Product Remove Successfully');
                       }
                     });
                   },
-                  child: ProductData[index]['fav'] ? Fav1() : Fav(),
+                  child: BookMark[index] ? Fav1() : Fav(),
                 ),
-
               ],
             ),
             SizedBox(
@@ -317,11 +322,12 @@ class _Home_ScreenState extends State<Home_Screen> {
                 height: 125,
                 decoration: BoxDecoration(
                     // color: Colors.white,
+
                     image: DecorationImage(
                         image: AssetImage(ProductData[index]['link']),
-                        fit: BoxFit.contain))),
+                        fit: BoxFit.scaleDown))),
             SizedBox(
-              height: 8,
+              height: 5,
             ),
             Text(
               ProductData[index]['name'],
@@ -334,7 +340,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               )),
             ),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             Text(
               '\$${ProductData[index]['price']}',
@@ -347,27 +353,20 @@ class _Home_ScreenState extends State<Home_Screen> {
               )),
             ),
             SizedBox(
-              height: 15,
+              height: 11,
             ),
             Center(
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    int i = 0;
-                    do {
-                      if (ProductData[index]['id'] ==
-                          CheckAddToCard[i]['id']) {
-                        check = false;
-                        print('All Ready $i');
-                      } else {
-                        check = true;
-                        print('All Ready not $i');
-                      }
-                      i++;
-                    } while (i < CheckAddToCard.length);
-                    if (check) {
+                    if (ProductData[index]["check"]) {
+                      ProductData[index]["check"] = false;
                       AddToCard.add(ProductData[index]);
-                      CheckAddToCard.add(ProductData[index]);
+                      showCustomToast(context, Icons.shopping_cart_outlined,
+                          'Product Added Successfully');
+                    } else {
+                      showCustomToast(context, Icons.shopping_cart_outlined,
+                          'Product All Ready Added');
                     }
                   });
                 },
@@ -375,8 +374,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                   width: 150,
                   height: 45,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.white38, width: 2),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: Colors.white38, width: 1),
                     gradient: LinearGradient(
                       colors: [
                         Color(0xff32343b),
@@ -404,7 +403,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                             fontSize: 13,
-
                           ),
                         ),
                       ),
@@ -421,22 +419,23 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   Icon Fav() {
     return Icon(
-                  Icons.favorite_border,
-                  color: Colors.red,
-                  size:22,
-                );
+      Icons.favorite_border,
+      color: Colors.red,
+      size: 22,
+    );
   }
+
   Icon Fav1() {
     return Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                  size: 22,
-                );
+      Icons.favorite,
+      color: Colors.red,
+      size: 22,
+    );
   }
-
-
 }
-bool isfav=false;
+
+// bool check=true;
+bool isfav = false;
 
 int? index1;
 

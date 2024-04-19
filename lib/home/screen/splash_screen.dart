@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ecommerce_app/home/screen/user/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       // After 3 seconds, navigate to HomeScreen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => Home_Screen(),
+          builder: (BuildContext context) => LoginScreen(),
         ),
       );
     });

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 
 import '../components/product_list.dart';
+import 'extra.dart';
 import 'home_screen.dart';
 
 class Add_To_Card extends StatefulWidget {
@@ -27,9 +28,10 @@ class _Add_To_CardState extends State<Add_To_Card> {
       });
       return total;
     }
-    var iteamtotal =SubTotal();
-    var discount = iteamtotal*20/100;
-    var subtotal = SubTotal()-discount+60;
+
+    var iteamtotal = SubTotal();
+    var discount = iteamtotal * 20 / 100;
+    var subtotal = SubTotal() - discount + 60;
 
     return Scaffold(
       body: Container(
@@ -120,13 +122,13 @@ class _Add_To_CardState extends State<Add_To_Card> {
             ),
             // Total Value Count
             Container(
-              width: 410,
+              width: double.infinity,
               height: 280,
               decoration: BoxDecoration(
-                // border: Border(
-                //     top: BorderSide(color: Colors.white38, width: 3),
-                //     left: BorderSide(color: Colors.white38, width: 3),
-                //     right: BorderSide(color: Colors.white38, width: 3)),
+                border: Border(
+                    top: BorderSide(color: Colors.white38, width: 1),
+                    left: BorderSide(color: Colors.white38, width: 1),
+                    right: BorderSide(color: Colors.white38, width: 1)),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40)),
@@ -165,7 +167,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Price (4 Items)',
+                          'Price (${AddToCard.length} Items)',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -286,18 +288,22 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       children: [
                         InkWell(
                           onTap: () {
-                            setState(() {
-                              // AddToCard.add(ProductData[index]);
-                              quantity++;
-                              // badgescount++;
-                            });
+                            if (AddToCard.length > 0) {
+                              Navigator.of(context).pushNamed('/order');
+                            } else {
+                              showCustomToast(
+                                  context,
+                                  Icons.warning_amber_rounded,
+                                  'Add At Least One Product');
+                            }
                           },
                           child: Container(
-                            width: 370,
+                            width: 365,
                             height: 60,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              // border: Border.all(color: Colors.white38, width: 1.5),
+                              border:
+                                  Border.all(color: Colors.white38, width: 1),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -339,7 +345,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        // border: Border.all(color: Colors.white38, width: 2),
+        border: Border.all(color: Colors.white38, width: 1),
         gradient: RadialGradient(
           center: Alignment.topLeft,
           radius: 1,
@@ -376,13 +382,6 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       letterSpacing: 1,
                     ),
                   ),
-                  //     Text('Visit Store',style: TextStyle(
-                  //   fontWeight: FontWeight.w400,
-                  //   fontFamily: 'cashDisplay',
-                  //   color: Colors.white,
-                  //   fontSize: 15,
-                  //   letterSpacing: 1,
-                  // ),),
                   SizedBox(
                     height: 7,
                   ),
@@ -412,8 +411,8 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           height: 30,
                           width: 30,
                           decoration: BoxDecoration(
-                              // border:
-                              //     Border.all(color: Colors.white38, width: 1),
+                              border:
+                                  Border.all(color: Colors.white38, width: 1),
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -452,8 +451,8 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           height: 30,
                           width: 30,
                           decoration: BoxDecoration(
-                              // border:
-                              //     Border.all(color: Colors.white38, width: 1),
+                              border:
+                                  Border.all(color: Colors.white38, width: 1),
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -475,6 +474,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       InkWell(
                         onTap: () {
                           setState(() {
+                            ProductData[index]["check"] = true;
                             AddToCard.removeAt(index);
                             ProductData[index]['quantity'] =
                                 productquantity = 1;
@@ -497,4 +497,3 @@ class _Add_To_CardState extends State<Add_To_Card> {
     );
   }
 }
-

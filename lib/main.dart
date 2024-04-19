@@ -4,14 +4,17 @@ import 'home/screen/book_mark.dart';
 import 'home/screen/extra.dart';
 import 'home/screen/favdeaital.dart';
 import 'home/screen/home_screen.dart';
+import 'home/screen/order_Placed.dart';
 import 'home/screen/product_details.dart';
 import 'home/screen/splash_screen.dart';
 import 'home/screen/add_to_card.dart';
 import 'package:flutter/services.dart';
 
+import 'home/screen/user/login.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.light
       )
@@ -30,14 +33,15 @@ class _EcommerceAppState extends State<EcommerceApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       routes: {
         '/' : (context) => Splash_Screen(),
+        '/login' : (context) => LoginScreen(),
+        '/login' : (context) => LoginScreen(),
         '/home' : (context) => Home_Screen(),
         '/product' : (context) => Products_details_Page(),
         '/card' : (context) => Add_To_Card(),
         '/fav' : (context) => Book_Mark(),
-        '/try' : (context) => Try(),
+        '/order' : (context) => Order_Placed(),
         '/favpage' : (context) => Fav_Page(),
       },
     );
