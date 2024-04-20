@@ -100,7 +100,7 @@ class _Fav_PageState extends State<Fav_Page> {
                   // color: Colors.white,
                     image: DecorationImage(
                         alignment: Alignment.center,
-                        image: AssetImage(BookMark[index]['link']),
+                        image: AssetImage(BookMarked[index]['link']),
                         fit: BoxFit.contain)),
               ),
             ),
@@ -131,7 +131,7 @@ class _Fav_PageState extends State<Fav_Page> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(BookMark[index]['name'],
+                    Text(BookMarked[index]['name'],
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontFamily: 'cashDisplay',
@@ -146,7 +146,7 @@ class _Fav_PageState extends State<Fav_Page> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$${BookMark[index]['price']}',
+                          '\$${BookMarked[index]['price']}',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -281,7 +281,7 @@ class _Fav_PageState extends State<Fav_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              BookMark.add(ProductData[index]);
+                              BookMarked.add(ProductData[index]);
                             });
                           },
                           child: Container(

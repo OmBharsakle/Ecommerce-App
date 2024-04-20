@@ -202,7 +202,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  if (1 < AddToCard[index]['quantity']) {
+                                  if (1<ProductData[index]['quantity']) {
                                     ProductData[index]['quantity']--;
                                   }
                                 });
@@ -284,7 +284,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              BookMark.add(ProductData[index]);
+                              BookMarked.add(ProductData[index]);
                             });
                           },
                           child: Container(

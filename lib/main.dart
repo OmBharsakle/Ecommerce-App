@@ -34,15 +34,14 @@ class _EcommerceAppState extends State<EcommerceApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/' : (context) => Splash_Screen(),
-        '/login' : (context) => LoginScreen(),
-        '/login' : (context) => LoginScreen(),
-        '/home' : (context) => Home_Screen(),
-        '/product' : (context) => Products_details_Page(),
-        '/card' : (context) => Add_To_Card(),
-        '/fav' : (context) => Book_Mark(),
-        '/order' : (context) => Order_Placed(),
-        '/favpage' : (context) => Fav_Page(),
+        '/' : (context) => const Splash_Screen(),
+        '/login' : (context) => const LoginScreen(),
+        '/home' : (context) => const Home_Screen(),
+        '/product' : (context) => const Products_details_Page(),
+        '/card' : (context) => const Add_To_Card(),
+        '/fav' : (context) => const Book_Mark(),
+        '/order' : (context) => const Order_Placed(),
+        '/favPage' : (context) => const Fav_Page(),
       },
     );
   }

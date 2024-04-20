@@ -125,7 +125,14 @@ class _Home_ScreenState extends State<Home_Screen> {
                   height: 200,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.white38, width: 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(0,7)
+                            ,
+                        )
+                      ],
+                      // border: Border.all(color: Colors.white38, width: 1),
                       gradient: LinearGradient(colors: [
                         Color(0xff484C57),
                         Color(0xff1D1F23),
@@ -298,19 +305,21 @@ class _Home_ScreenState extends State<Home_Screen> {
                 InkWell(
                   onTap: () {
                     setState(() {
-                      BookMark[index] = !BookMark[index];
-                      if (BookMark[index]) {
-                        // BookMarked.add(index);
-                        showCustomToast(context, Icons.favorite_outlined, 'Product Added Successfully');
+                      ProductData[index]['fav'] = !ProductData[index]['fav'];
+                      if (ProductData[index]['fav']) {
+                        ProductData[index]["fav"] = true;
+                        showCustomToast(context, Icons.favorite_outlined,
+                            'Product Added Successfully');
                         BookMarked.add(ProductData[index]);
                       } else {
-                        BookMarked.remove(index);
-                        BookMarked.remove(index);
-                        showCustomToast(context, Icons.favorite_border, 'Product Remove Successfully');
+                        BookMarked[index]["fav"] = false;
+                        showCustomToast(context, Icons.favorite_border,
+                            'Product Remove Successfully');
+                        BookMarked.removeAt(index);
                       }
                     });
                   },
-                  child: BookMark[index] ? Fav1() : Fav(),
+                  child: ProductData[index]['fav'] ? Fav1() : Fav(),
                 ),
               ],
             ),
@@ -435,8 +444,3 @@ class _Home_ScreenState extends State<Home_Screen> {
 }
 
 // bool check=true;
-bool isfav = false;
-
-int? index1;
-
-int quantity = 1;

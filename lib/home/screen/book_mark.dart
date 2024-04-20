@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/home/screen/product_details.dart';
+// import 'package:ecommerce_app/home/screen/product_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,62 +34,60 @@ class _Book_MarkState extends State<Book_Mark> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    // Card Bar
-                    Container(
-                      margin: EdgeInsets.only(top: 35),
-                      width: double.infinity,
-                      height: 80,
-                      color: Colors.transparent,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(onTap: () {
-                            Navigator.of(context).pop();
-                          },
+              child: Column(
+                children: [
+                  // Card Bar
+                  Container(
+                    margin: EdgeInsets.only(top: 35),
+                    width: double.infinity,
+                    height: 80,
+                    color: Colors.transparent,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                          child: Icon(
+                            Icons.arrow_back_ios_rounded,
+                            color: Colors.white,
+                            size: 25,
+                          ),
+                        ),
+                        Text(
+                          'Book Mark Products',
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                letterSpacing: 2,
+                                color: Colors.white),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 11),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                Navigator.of(context).pushNamed('/home');
+                              });
+                            },
                             child: Icon(
-                              Icons.arrow_back_ios_rounded,
+                              Icons.home_outlined,
                               color: Colors.white,
-                              size: 25,
+                              size: 30,
                             ),
                           ),
-                          Text(
-                            'Book Mark Products',
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                  letterSpacing: 2,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 11),
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  Navigator.of(context).pushNamed('/home');
-                                });
-                              },
-                              child: Icon(
-                                Icons.home_outlined,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            ),
-                          ),
+                        ),
 
-                        ],
-                      ),
+                      ],
                     ),
-                    // Add Card Container
-                    Column(
-                      children: List.generate(BookMark.length, (index) => Add_To_Card_Product(index),),
-                    ),
-                  ],
-                ),
+                  ),
+                  // Add Card Container
+                  Column(
+                    children: List.generate(BookMarked.length, (index) => Add_To_Card_Product(index),),
+                  ),
+                ],
               ),
             ),
           ],
@@ -125,7 +123,7 @@ class _Book_MarkState extends State<Book_Mark> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image:
-                        AssetImage(ProductData[BookMarked[index]]['link']),
+                        AssetImage(BookMarked[index]['link']),
                         fit: BoxFit.contain))
             ),
             Padding(
@@ -134,7 +132,7 @@ class _Book_MarkState extends State<Book_Mark> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(ProductData[BookMarked[index]]['name'],style: TextStyle(
+                  Text(BookMarked[index]['name'],style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontFamily: 'cashDisplay',
                     color: Colors.white,
@@ -143,7 +141,7 @@ class _Book_MarkState extends State<Book_Mark> {
                   ),),
                   SizedBox(height: 7,),
                   Text(
-                    '\$${ProductData[BookMarked[index]]['price']}' ,
+                    '\$${BookMarked[index]['price']}' ,
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -219,9 +217,8 @@ class _Book_MarkState extends State<Book_Mark> {
                 children: [
                   InkWell(onTap: () {
                     setState(() {
-                      isfav=false;
-                      BookMark.removeAt(index);
-                      // badgescount--;
+                      BookMarked[index]["fav"] = false;
+                      BookMarked.removeAt(index);
                     });
                   },
                     child: Icon(
@@ -233,8 +230,7 @@ class _Book_MarkState extends State<Book_Mark> {
                   SizedBox(height: 50,),
                   InkWell(onTap: () {
                     setState(() {
-                      isfav=false;
-                      BookMark.removeAt(index);
+                      BookMarked.removeAt(index);
                       // badgescount--;
                     });
                   },
@@ -244,7 +240,7 @@ class _Book_MarkState extends State<Book_Mark> {
                           var myfavindex=index;
                           print(myfavindex);
                           Navigator.of(context)
-                              .pushNamed('/favpage', arguments: index);
+                              .pushNamed('/favPage', arguments: index);
                         });
                       },
                       child: Icon(

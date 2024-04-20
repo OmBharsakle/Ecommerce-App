@@ -88,7 +88,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                                 },
                                 child: badges.Badge(
                                   badgeContent: Text(
-                                    '${BookMark.length}',
+                                    '${BookMarked.length}',
                                     style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
                                       fontWeight: FontWeight.w600,
@@ -474,10 +474,9 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            ProductData[index]["check"] = true;
+                            AddToCard[index]["check"] = true;
+                            AddToCard[index]['quantity'] = productquantity = 1;
                             AddToCard.removeAt(index);
-                            ProductData[index]['quantity'] =
-                                productquantity = 1;
                           });
                         },
                         child: Icon(

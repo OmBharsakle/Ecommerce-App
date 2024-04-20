@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:ecommerce_app/home/screen/user/login.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,6 +31,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
     });
     return Scaffold(
       body: Container(
+        
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
