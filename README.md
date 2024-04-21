@@ -2,6 +2,17 @@
 
 ###
 
+<h3 align="center">🛒 Ecommerce App Video 🛒</h3>
+
+###
+<h1></h1>
+
+<div align="center">
+  <video src="https://github.com/OmBharsakle/Ecommerce-App/assets/149371245/6c33a45f-85c5-47b7-8edf-e492dfa9cf5d"></video>
+</div>
+  
+<h1></h1>
+
 <h3 align="center">🛒 Ecommerce App Screenshot 🛒</h3>
 
 ###
