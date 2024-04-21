@@ -284,7 +284,6 @@ class _Products_details_PageState extends State<Products_details_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              BookMarked.add(ProductData[index]);
                             });
                           },
                           child: Container(

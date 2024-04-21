@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/home/screen/user/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../extra.dart';
 import '../home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -30,6 +31,16 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Text(
+              //   'PixelsCo.',
+              //   style: GoogleFonts.poppins(
+              //     textStyle: const TextStyle(
+              //         fontWeight: FontWeight.w700,
+              //         fontSize: 22,
+              //         letterSpacing: 2,
+              //         color: Colors.white),
+              //   ),
+              // ),
               //user name text box
               Container(
                 child: TextField(
@@ -132,7 +143,26 @@ class _SignupScreenState extends State<SignupScreen> {
                   setState(() {
                     String NewUser = NewUsername.text.toString();
                     String NewPass = NewPassword.text.toString();
-                    UserList.add({"user" :NewUser,"pass":NewPass});
+                    if((NewUser != '' && NewPass != ''))
+                      {
+                        UserList.add({"user" :NewUser,"pass":NewPass});
+                        Navigator.pop(context);
+                      }
+                    else if(NewUser == '' && NewPass == '')
+                      {
+                        showCustomToast(context, Icons.error_outline,
+                            'Enter Your Username & Password');
+                      }
+                    else if(NewPass == '')
+                      {
+                        showCustomToast(context, Icons.error_outline,
+                            'Enter Your Password');
+                      }
+                    else
+                      {
+                        showCustomToast(context, Icons.error_outline,
+                            'Enter Your Username');
+                      }
                   });
                 },
                 child: Container(
@@ -168,6 +198,7 @@ class _SignupScreenState extends State<SignupScreen> {
               const SizedBox(height: 10),
               TextButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   // Navigate to signup screen
                   // Navigator.push(
                   //   context,
@@ -175,7 +206,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   // );
                 },
                 child: Text(
-                  'Don\'t have an account? Sign up',
+                  'Already Have An Account? Log In',
                   style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
                       color: Colors.white,
@@ -183,30 +214,27 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const Home_Screen(),
-                    ),
-                  );
-                  // Navigator.of(context).pushNamed('/home');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Skip',
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    const Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 15,),
-                  ],
-                ),
-              ),
+              // Row(
+              //     children: <Widget>[
+              //       Expanded(
+              //           child: Divider()
+              //       ),
+              //
+              //       Text(
+              //          '>    Or Continue With    <',
+              //         style: GoogleFonts.poppins(
+              //           textStyle: const TextStyle(
+              //             color: Colors.white,
+              //           ),
+              //         ),
+              //       ),
+              //
+              //       Expanded(
+              //           child: Divider()
+              //       ),
+              //     ]
+              // )
+
             ],
           ),
         ),
@@ -216,4 +244,4 @@ class _SignupScreenState extends State<SignupScreen> {
 }
 
 
-bool _passwordVisible=false;
+bool _passwordVisible=true;

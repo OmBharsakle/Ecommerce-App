@@ -33,6 +33,16 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Text(
+              //   'PixelsCo.',
+              //   style: GoogleFonts.poppins(
+              //     textStyle: const TextStyle(
+              //         fontWeight: FontWeight.w700,
+              //         fontSize: 22,
+              //         letterSpacing: 2,
+              //         color: Colors.white),
+              //   ),
+              // ),
               Container(
                 child: TextField(
                   controller: username,
@@ -104,20 +114,41 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {
                   String User = username.text.toString();
                   String pass = password.text.toString();
+                  bool check=false;
                   for(int i=0; i< UserList.length; i++)
                     {
                       if(UserList[i]['user']==User && UserList[i]['pass']==pass)
                       {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => Home_Screen(),
-                          ),
-                        );
+                        check=true;
+                      }
+                      else if(User == '' && pass == '')
+                      {
+                        showCustomToast(context, Icons.error_outline,
+                            'Enter Valid Username/Password');
+                      }
+                      else if(pass == '')
+                      {
+                        showCustomToast(context, Icons.error_outline,
+                            'Enter Valid Password');
+                      }
+                      else if(User == '')
+                      {
+                        showCustomToast(context,Icons.warning_amber_rounded,'Enter Valid Username');
                       }
                       else
-                      {
-                        showCustomToast(context,Icons.warning_amber_rounded,'Enter Vaild Username & Password');
-                      }
+                        {
+                          showCustomToast(context, Icons.error_outline,
+                              'Enter Valid Username/Password');
+                        }
+                    }
+
+                  if(check)
+                    {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => Home_Screen(),
+                        ),
+                      );
                     }
                 },
                 child: Container(
@@ -201,4 +232,4 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 
-bool _passwordVisible=false;
+bool _passwordVisible=true;

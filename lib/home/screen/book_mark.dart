@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 import 'extra.dart';
 import 'home/screen/home_screen.dart';
-
 import '../components/product_list.dart';
 import 'home_screen.dart';
 
@@ -24,7 +23,7 @@ class _Book_MarkState extends State<Book_Mark> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient:
             RadialGradient(center: Alignment.topLeft, radius: 1,colors: [
               Color(0xff32343b),
@@ -38,7 +37,7 @@ class _Book_MarkState extends State<Book_Mark> {
                 children: [
                   // Card Bar
                   Container(
-                    margin: EdgeInsets.only(top: 35),
+                    margin: const EdgeInsets.only(top: 35),
                     width: double.infinity,
                     height: 80,
                     color: Colors.transparent,
@@ -48,44 +47,40 @@ class _Book_MarkState extends State<Book_Mark> {
                         InkWell(onTap: () {
                           Navigator.of(context).pop();
                         },
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back_ios_rounded,
                             color: Colors.white,
                             size: 25,
                           ),
                         ),
                         Text(
-                          'Book Mark Products',
+                          'WishList',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                letterSpacing: 2,
+                            textStyle: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 22,
+                                letterSpacing: 3,
                                 color: Colors.white),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 11),
-                          child: InkWell(
+                         InkWell(
                             onTap: () {
                               setState(() {
                                 Navigator.of(context).pushNamed('/home');
                               });
                             },
-                            child: Icon(
-                              Icons.home_outlined,
+                            child: const Icon(
+                              Icons.home,
                               color: Colors.white,
                               size: 30,
                             ),
                           ),
-                        ),
-
                       ],
                     ),
                   ),
                   // Add Card Container
                   Column(
-                    children: List.generate(BookMarked.length, (index) => Add_To_Card_Product(index),),
+                    children: List.generate(likedProductList.length, (index) => Liked_Product(index),),
                   ),
                 ],
               ),
@@ -96,15 +91,15 @@ class _Book_MarkState extends State<Book_Mark> {
     );
   }
 
-  Container Add_To_Card_Product(int index) {
+  Container Liked_Product(int index) {
     return Container(
-      margin: EdgeInsets.only(bottom: 15),
+      margin: const EdgeInsets.only(bottom: 15),
       width: double.infinity,
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.white38, width: 2),
-        gradient: RadialGradient(
+        gradient: const RadialGradient(
           center: Alignment.topLeft,
           radius: 1,
           colors: [
@@ -123,7 +118,7 @@ class _Book_MarkState extends State<Book_Mark> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image:
-                        AssetImage(BookMarked[index]['link']),
+                        AssetImage(ProductData[likedProductList[index]]['link']),
                         fit: BoxFit.contain))
             ),
             Padding(
@@ -132,130 +127,118 @@ class _Book_MarkState extends State<Book_Mark> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(BookMarked[index]['name'],style: TextStyle(
+                  Text(ProductData[likedProductList[index]]['name'],style: const TextStyle(
                     fontWeight: FontWeight.w600,
                     fontFamily: 'cashDisplay',
                     color: Colors.white,
                     fontSize: 18,
                     letterSpacing: 1,
                   ),),
-                  SizedBox(height: 7,),
+                  const SizedBox(height: 7,),
                   Text(
-                    '\$${BookMarked[index]['price']}' ,
+                    '\$${ProductData[likedProductList[index]]['price']}' ,
                     style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                           fontSize: 18,
                           letterSpacing: 1,
                         )),
                   ),
-                  SizedBox(height: 10,),
-                  Container(
-                    width: 130,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.white38, width: 2),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xff32343b),
-                          Color(0xff1c1e22),
-                        ],
-                      ),
-                    ),
-                    child: InkWell(onTap: () {
-                      setState(() {
-                        if (ProductData[index]["check"]) {
-                          ProductData[index]["check"]=false;
-                          AddToCard.add(ProductData[index]);
-                          showCustomToast(context,Icons.shopping_cart_outlined,'Product Added Successfully');
-                        }
-                        else{
-                          showCustomToast(context,Icons.shopping_cart_outlined,'Product All Ready Added');
-                        }
-                      });
-                    },
-                      child: Container(
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Icon(
-                              Icons.shopping_bag_outlined,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'Add To Cart',
-                              style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 40),
-              width: 20,
-              height: 200,
-              // color: Colors.black38,
-              child: Column(
-                children: [
-                  InkWell(onTap: () {
-                    setState(() {
-                      BookMarked[index]["fav"] = false;
-                      BookMarked.removeAt(index);
-                    });
-                  },
-                    child: Icon(
-                      Icons.bookmark_remove_outlined,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                  ),
-                  SizedBox(height: 50,),
-                  InkWell(onTap: () {
-                    setState(() {
-                      BookMarked.removeAt(index);
-                      // badgescount--;
-                    });
-                  },
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          var myfavindex=index;
-                          print(myfavindex);
-                          Navigator.of(context)
-                              .pushNamed('/favPage', arguments: index);
-                        });
-                      },
-                      child: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ),
-                  ),
+                  const SizedBox(height: 10,),
+                 Row(
+                   children: [
+                     Container(
+                       width: 130,
+                       height: 40,
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(20),
+                         border: Border.all(color: Colors.white38, width: 2),
+                         gradient: const LinearGradient(
+                           colors: [
+                             Color(0xff32343b),
+                             Color(0xff1c1e22),
+                           ],
+                         ),
+                       ),
+                       child: InkWell(onTap: () {
+                         setState(() {
+                           if (ProductData[index]["check"]) {
+                             ProductData[index]["check"]=false;
+                             AddToCard.add(ProductData[index]);
+                             showCustomToast(context,Icons.shopping_cart_outlined,'Product Added Successfully');
+                           }
+                           else{
+                             showCustomToast(context,Icons.shopping_cart_outlined,'Product All Ready Added');
+                           }
+                         });
+                       },
+                         child: Container(
+                           child: Row(
+                             children: [
+                               const SizedBox(
+                                 width: 15,
+                               ),
+                               const Icon(
+                                 Icons.shopping_bag_outlined,
+                                 color: Colors.white,
+                                 size: 20,
+                               ),
+                               const SizedBox(
+                                 width: 8,
+                               ),
+                               Text(
+                                 'Add To Cart',
+                                 style: GoogleFonts.poppins(
+                                   textStyle: const TextStyle(
+                                     fontWeight: FontWeight.w500,
+                                     color: Colors.white,
+                                     fontSize: 10,
+                                   ),
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(width: 50,),
+                     InkWell(
+                       onTap: () {
+                         setState(() {
+                           Navigator.of(context)
+                               .pushNamed('/favPage', arguments: likedProductList[index]);
+                         });
+                       },
+                       child: const Icon(
+                         Icons.arrow_forward_rounded,
+                         color: Colors.white,
+                         size: 30,
+                       ),
+                     ),
+                   ],
+                 )
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+  Icon Fav() {
+    return const Icon(
+      Icons.favorite_border,
+      color: Colors.red,
+      size: 22,
+    );
+  }
+
+  Icon Fav1() {
+    return const Icon(
+      Icons.favorite,
+      color: Colors.red,
+      size: 22,
     );
   }
 }

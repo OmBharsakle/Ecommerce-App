@@ -68,5 +68,5 @@ List ProductData = [
 ];
 
 List AddToCard = [];
-// List BookMark = List.generate(ProductData.length, (index) => false);
-List BookMarked = [];
+List UnLikedList = List.generate(ProductData.length, (index) => false);
+List likedProductList = [];

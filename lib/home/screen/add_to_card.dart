@@ -51,9 +51,9 @@ class _Add_To_CardState extends State<Add_To_Card> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      // Card Bar
+                      // Card Box
                       Container(
-                        margin: EdgeInsets.only(top: 35),
+                        margin: EdgeInsets.only(top: 30),
                         width: double.infinity,
                         height: 80,
                         color: Colors.transparent,
@@ -62,7 +62,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Navigator.of(context).pop();
+                                Navigator.pop(context, 'fine');
                               },
                               child: Icon(
                                 Icons.arrow_back_ios_rounded,
@@ -73,35 +73,32 @@ class _Add_To_CardState extends State<Add_To_Card> {
                             Text(
                               'Card Details',
                               style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20,
+                                textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22,
                                     letterSpacing: 2,
                                     color: Colors.white),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 11),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.of(context).pushNamed('/fav');
-                                },
-                                child: badges.Badge(
-                                  badgeContent: Text(
-                                    '${BookMarked.length}',
-                                    style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      letterSpacing: 1,
-                                    )),
-                                  ),
-                                  child: Icon(
-                                    Icons.bookmark_add_outlined,
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushNamed('/fav');
+                              },
+                              child: badges.Badge(
+                                badgeContent: Text(
+                                  '${likedProductList.length}',
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                    fontWeight: FontWeight.w600,
                                     color: Colors.white,
-                                    size: 30,
-                                  ),
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                  )),
+                                ),
+                                child: Icon(
+                                  Icons.bookmark_add_outlined,
+                                  color: Colors.white,
+                                  size: 30,
                                 ),
                               ),
                             ),

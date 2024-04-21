@@ -71,7 +71,7 @@ class _Fav_PageState extends State<Fav_Page> {
                         },
                         child: badges.Badge(
                           badgeContent: Text(
-                            '0',
+                            '${AddToCard.length}',
                             style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -100,7 +100,7 @@ class _Fav_PageState extends State<Fav_Page> {
                   // color: Colors.white,
                     image: DecorationImage(
                         alignment: Alignment.center,
-                        image: AssetImage(BookMarked[index]['link']),
+                        image: AssetImage(ProductData[index]['link']),
                         fit: BoxFit.contain)),
               ),
             ),
@@ -131,7 +131,7 @@ class _Fav_PageState extends State<Fav_Page> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(BookMarked[index]['name'],
+                    Text(ProductData[index]['name'],
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontFamily: 'cashDisplay',
@@ -146,7 +146,7 @@ class _Fav_PageState extends State<Fav_Page> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$${BookMarked[index]['price']}',
+                          '\$${ProductData[index]['price']}',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -281,7 +281,6 @@ class _Fav_PageState extends State<Fav_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              BookMarked.add(ProductData[index]);
                             });
                           },
                           child: Container(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home/components/product_list.dart';
 import 'home/screen/book_mark.dart';
-import 'home/screen/extra.dart';
 import 'home/screen/favdeaital.dart';
 import 'home/screen/home_screen.dart';
 import 'home/screen/order_Placed.dart';
@@ -9,7 +7,6 @@ import 'home/screen/product_details.dart';
 import 'home/screen/splash_screen.dart';
 import 'home/screen/add_to_card.dart';
 import 'package:flutter/services.dart';
-
 import 'home/screen/user/login.dart';
 
 void main() {

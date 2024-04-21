@@ -18,14 +18,21 @@ class Home_Screen extends StatefulWidget {
 }
 
 class _Home_ScreenState extends State<Home_Screen> {
-  int badgescount = AddToCard.length;
+  bool check=false;
+
+  void RefreshAllData()
+  {
+    setState(() {
+      check=true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient:
                 RadialGradient(center: Alignment.topLeft, radius: 0.8, colors: [
           Color(0xff484C57),
@@ -34,13 +41,13 @@ class _Home_ScreenState extends State<Home_Screen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // App Bar Code
                 Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin: const EdgeInsets.only(top: 30),
                   width: double.infinity,
                   height: 80,
                   color: Colors.transparent,
@@ -50,7 +57,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                       Text(
                         'PixelsCo.',
                         style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 22,
                               letterSpacing: 2,
@@ -60,21 +67,35 @@ class _Home_ScreenState extends State<Home_Screen> {
                       Padding(
                         padding: const EdgeInsets.only(right: 11),
                         child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).pushNamed('/card');
+                          onTap: () async{
+                            String fine =  await Navigator.push(context,MaterialPageRoute(builder: ((context) => Add_To_Card())));
+                            if(fine=='fine')
+                              {
+                                RefreshAllData();
+                              }
                           },
                           child: badges.Badge(
-                            badgeContent: Text(
+                            badgeAnimation: badges.BadgeAnimation.scale(),
+                            badgeContent: check ? Text(
                               '${AddToCard.length}',
                               style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 14,
-                                letterSpacing: 1,
-                              )),
-                            ),
-                            child: Icon(
+                                  textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                  )),
+                            ) : Text(
+                          '${AddToCard.length}',
+                            style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: 14,
+                          letterSpacing: 1,
+                          )),
+                      ),
+                            child: const Icon(
                               Icons.shopping_bag_outlined,
                               color: Colors.white,
                               size: 30,
@@ -89,23 +110,23 @@ class _Home_ScreenState extends State<Home_Screen> {
                 Container(
                   child: TextField(
                     style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         color: Colors.white,
                       ),
                     ),
                     decoration: InputDecoration(
                       hintText: 'Serach Your Product',
                       hintStyle: GoogleFonts.poppins(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           color: Colors.white,
                         ),
                       ),
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.search,
                         color: Colors.white,
                         size: 25,
                       ),
-                      suffixIcon: Icon(
+                      suffixIcon: const Icon(
                         Icons.highlight_remove,
                         color: Colors.white,
                       ),
@@ -115,25 +136,25 @@ class _Home_ScreenState extends State<Home_Screen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 // Hero Container
                 Container(
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   width: double.infinity,
                   height: 200,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black,
-                          offset: Offset(0,7)
-                            ,
-                        )
-                      ],
-                      // border: Border.all(color: Colors.white38, width: 1),
-                      gradient: LinearGradient(colors: [
+                      // boxShadow: [
+                      //   const BoxShadow(
+                      //     color: Colors.black,
+                      //     offset: Offset(0,7)
+                      //       ,
+                      //   )
+                      // ],
+                      border: Border.all(color: Colors.white38, width: 1),
+                      gradient: const LinearGradient(colors: [
                         Color(0xff484C57),
                         Color(0xff1D1F23),
                         Color(0xff1D1F23),
@@ -151,7 +172,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                               "New Vintage\nCollection",
                               // textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                   fontSize: 20,
@@ -164,14 +185,14 @@ class _Home_ScreenState extends State<Home_Screen> {
                                 Navigator.of(context).pushNamed('/try');
                               },
                               child: Container(
-                                margin: EdgeInsets.only(top: 25),
+                                margin: const EdgeInsets.only(top: 25),
                                 width: 120,
                                 height: 40,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18),
                                   border: Border.all(
                                       color: Colors.white38, width: 1),
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                     colors: [
                                       Color(0xff32343b),
                                       Color(0xff1c1e22),
@@ -182,7 +203,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                   child: Text(
                                     'Explore Now',
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
+                                      textStyle: const TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Colors.white,
                                         fontSize: 13,
@@ -196,10 +217,10 @@ class _Home_ScreenState extends State<Home_Screen> {
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(left: 10),
+                          margin: const EdgeInsets.only(left: 10),
                           width: 165,
                           height: 160,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               // color: Colors.white,
                               image: DecorationImage(
                                   image: AssetImage('assets/image/02.png'),
@@ -215,13 +236,13 @@ class _Home_ScreenState extends State<Home_Screen> {
                 //   color: Colors.white38,
                 //   thickness: 1,
                 // ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   'Popular',
                   style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
                     fontSize: 25,
@@ -229,7 +250,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   )),
                 ),
                 // SizedBox(height: 15,),
-                Divider(
+                const Divider(
                   height: 35,
                   color: Colors.white38,
                   thickness: 1,
@@ -265,7 +286,7 @@ class _Home_ScreenState extends State<Home_Screen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: Colors.white38, width: 1),
-        gradient: RadialGradient(
+        gradient: const RadialGradient(
           center: Alignment.topRight,
           radius: 1.5,
           colors: [
@@ -281,7 +302,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           children: [
             Row(
               children: [
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Icons.star_outlined,
@@ -293,37 +314,38 @@ class _Home_ScreenState extends State<Home_Screen> {
                 Text(
                   ' 4.5',
                   style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
                     fontSize: 12,
                   )),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 89,
                 ),
                 InkWell(
                   onTap: () {
                     setState(() {
-                      ProductData[index]['fav'] = !ProductData[index]['fav'];
-                      if (ProductData[index]['fav']) {
-                        ProductData[index]["fav"] = true;
-                        showCustomToast(context, Icons.favorite_outlined,
-                            'Product Added Successfully');
-                        BookMarked.add(ProductData[index]);
-                      } else {
-                        BookMarked[index]["fav"] = false;
-                        showCustomToast(context, Icons.favorite_border,
-                            'Product Remove Successfully');
-                        BookMarked.removeAt(index);
-                      }
+                      UnLikedList[index] = !UnLikedList[index];
+                        if(UnLikedList[index])
+                        {
+                          likedProductList.add(index);
+                          showCustomToast(context, Icons.favorite_rounded,
+                              'Product Added Successfully');
+                        }
+                        else
+                        {
+                          likedProductList.remove(index);
+                          showCustomToast(context, Icons.favorite_border_rounded,
+                              'Product UnLiked Successfully');
+                        }
                     });
                   },
-                  child: ProductData[index]['fav'] ? Fav1() : Fav(),
+                  child: check?(UnLikedList[index] ? Fav1() : Fav()):(UnLikedList[index] ? Fav1() : Fav()),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -335,33 +357,33 @@ class _Home_ScreenState extends State<Home_Screen> {
                     image: DecorationImage(
                         image: AssetImage(ProductData[index]['link']),
                         fit: BoxFit.scaleDown))),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
               ProductData[index]['name'],
               style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
                 fontSize: 14,
                 letterSpacing: 1.5,
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
               '\$${ProductData[index]['price']}',
               style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                 fontWeight: FontWeight.w700,
                 color: Colors.white,
                 fontSize: 15,
                 letterSpacing: 1,
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
             Center(
@@ -385,7 +407,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     border: Border.all(color: Colors.white38, width: 1),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [
                         Color(0xff32343b),
                         Color(0xff1c1e22),
@@ -394,21 +416,21 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.shopping_bag_outlined,
                         color: Colors.white,
                         size: 25,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
                         'Add To Cart',
                         style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                             fontSize: 13,
@@ -427,7 +449,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   }
 
   Icon Fav() {
-    return Icon(
+    return const Icon(
       Icons.favorite_border,
       color: Colors.red,
       size: 22,
@@ -435,12 +457,12 @@ class _Home_ScreenState extends State<Home_Screen> {
   }
 
   Icon Fav1() {
-    return Icon(
+    return const Icon(
       Icons.favorite,
       color: Colors.red,
       size: 22,
     );
   }
 }
-
+int? likedProduct;
 // bool check=true;
