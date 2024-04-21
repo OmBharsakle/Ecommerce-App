@@ -1,16 +1,20 @@
-# ecommerce_app
+<h1 align="center">🛒 Ecommerce App Detail's 🛒</h1>
 
-A new Flutter project.
+###
 
-## Getting Started
+<h3 align="center">🛒 Ecommerce App Screenshot 🛒</h3>
 
-This project is a starting point for a Flutter application.
+###
 
-A few resources to get you started if this is your first Flutter project:
+<h1></h1>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div align="center">
+<img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/0.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/1.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/2.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/3.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/4.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/5.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/6.PNG" height="720">
+  <img src="https://github.com/OmBharsakle/Ecommerce-App/blob/master/assets/image/screenshot/7.PNG" height="720">
+</div>
