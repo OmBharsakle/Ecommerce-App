@@ -16,6 +16,7 @@ class Products_details_Page extends StatefulWidget {
 }
 
 class _Products_details_PageState extends State<Products_details_Page> {
+  bool check=false;
   @override
   Widget build(BuildContext context) {
     var index = ModalRoute.of(context)!.settings.arguments as int;
@@ -47,7 +48,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          Navigator.of(context).pop();
+                          Navigator.pop(context, 'fine');
                         });
                       },
                       child: Icon(
@@ -284,6 +285,19 @@ class _Products_details_PageState extends State<Products_details_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
+                              UnLikedList[index] = !UnLikedList[index];
+                              if(UnLikedList[index])
+                              {
+                                likedProductList.add(index);
+                                showCustomToast(context, Icons.favorite_rounded,
+                                    'Product Added Successfully');
+                              }
+                              else
+                              {
+                                likedProductList.remove(index);
+                                showCustomToast(context, Icons.favorite_border_rounded,
+                                    'Product UnLiked Successfully');
+                              }
                             });
                           },
                           child: Container(
@@ -300,11 +314,7 @@ class _Products_details_PageState extends State<Products_details_Page> {
                                 ],
                               ),
                             ),
-                            child: Icon(
-                              Icons.bookmark_add_outlined,
-                              color: Colors.white,
-                              size: 25,
-                            ),
+                            child: check?(UnLikedList[index] ? Fav1() : Fav()):(UnLikedList[index] ? Fav1() : Fav()),
                           ),
                         ),
                         SizedBox(
@@ -359,6 +369,21 @@ class _Products_details_PageState extends State<Products_details_Page> {
           ],
         ),
       ),
+    );
+  }
+  Icon Fav() {
+    return const Icon(
+      Icons.bookmark_add_outlined,
+      color: Colors.white,
+      size: 28,
+    );
+  }
+
+  Icon Fav1() {
+    return const Icon(
+      Icons.bookmark_remove_outlined,
+      color: Colors.white,
+      size: 28,
     );
   }
 }

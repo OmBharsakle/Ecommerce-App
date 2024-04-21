@@ -121,29 +121,41 @@ class _LoginScreenState extends State<LoginScreen> {
                       {
                         check=true;
                       }
+                      else if(UserList[i]['user']!=User && UserList[i]['pass']!=pass)
+                        {
+                          showCustomToast(context, Icons.error_outline,
+                              '>Enter Valid Username/Password');
+                        }
                       else if(User == '' && pass == '')
                       {
                         showCustomToast(context, Icons.error_outline,
-                            'Enter Valid Username/Password');
+                            'Enter Valid Username/Password<');
                       }
                       else if(pass == '')
                       {
                         showCustomToast(context, Icons.error_outline,
                             'Enter Valid Password');
                       }
+                      else if(UserList[i]['pass']!=pass)
+                        {
+                          showCustomToast(context, Icons.error_outline,
+                              'Enter Valid Password');
+                        }
                       else if(User == '')
                       {
                         showCustomToast(context,Icons.warning_amber_rounded,'Enter Valid Username');
                       }
-                      else
+                      else if(UserList[i]['user']!=User)
                         {
-                          showCustomToast(context, Icons.error_outline,
-                              'Enter Valid Username/Password');
+                          showCustomToast(context,Icons.warning_amber_rounded,'Enter Valid Username');
+
                         }
+
                     }
 
                   if(check)
                     {
+                      showCustomToast(context,Icons.check_circle,'Login Successfully!');
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (BuildContext context) => Home_Screen(),

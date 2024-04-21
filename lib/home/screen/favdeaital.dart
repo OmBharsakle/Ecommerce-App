@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 
+import 'extra.dart';
 import 'home_screen.dart';
 
 class Fav_Page extends StatefulWidget {
@@ -281,6 +282,19 @@ class _Fav_PageState extends State<Fav_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
+                              UnLikedList[index] = !UnLikedList[index];
+                              if(UnLikedList[index])
+                              {
+                                likedProductList.add(index);
+                                showCustomToast(context, Icons.favorite_rounded,
+                                    'Product Added Successfully');
+                              }
+                              else
+                              {
+                                likedProductList.remove(index);
+                                showCustomToast(context, Icons.favorite_border_rounded,
+                                    'Product UnLiked Successfully');
+                              }
                             });
                           },
                           child: Container(
@@ -297,11 +311,7 @@ class _Fav_PageState extends State<Fav_Page> {
                                 ],
                               ),
                             ),
-                            child: Icon(
-                              Icons.bookmark_add_outlined,
-                              color: Colors.white,
-                              size: 25,
-                            ),
+                            child: check?(UnLikedList[index] ? Fav1() : Fav()):(UnLikedList[index] ? Fav1() : Fav()),
                           ),
                         ),
                         SizedBox(
@@ -310,34 +320,13 @@ class _Fav_PageState extends State<Fav_Page> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              // AddToCard.add(ProductData[index]);
-                              // for (int i = 0; i < AddToCard.length; i++) {
-                              //   if (ProductData[index]['id'] ==
-                              //       AddToCard[i]['id']) {
-                              //     check = false;
-                              //     print('All Ready $i');
-                              //   } else {
-                              //     check = true;
-                              //     print('All Ready not $i');
-                              //   }
-                              // }
-                              // if (check) {
-                              //   AddToCard.add(ProductData[index]);
-                              // }
-                              int i = 0;
-                              do {
-                                if (ProductData[index]['id'] ==
-                                    AddToCard[i]['id']) {
-                                  check = false;
-                                  print('All Ready $i');
-                                } else {
-                                  check = true;
-                                  print('All Ready not $i');
-                                }
-                                i++;
-                              } while (i<AddToCard.length);
-                              if (check) {
+                              if (ProductData[index]["check"]) {
+                                ProductData[index]["check"]=false;
                                 AddToCard.add(ProductData[index]);
+                                showCustomToast(context,Icons.shopping_cart_outlined,'Product Added Successfully');
+                              }
+                              else{
+                                showCustomToast(context,Icons.shopping_cart_outlined,'Product All Ready Added');
                               }
                             });
                           },
@@ -377,6 +366,21 @@ class _Fav_PageState extends State<Fav_Page> {
           ],
         ),
       ),
+    );
+  }
+  Icon Fav() {
+    return const Icon(
+      Icons.bookmark_add_outlined,
+      color: Colors.white,
+      size: 28,
+    );
+  }
+
+  Icon Fav1() {
+    return const Icon(
+      Icons.bookmark_remove_outlined,
+      color: Colors.white,
+      size: 28,
     );
   }
 }

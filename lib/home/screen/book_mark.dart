@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 import 'extra.dart';
-import 'home/screen/home_screen.dart';
 import '../components/product_list.dart';
 import 'home_screen.dart';
 
