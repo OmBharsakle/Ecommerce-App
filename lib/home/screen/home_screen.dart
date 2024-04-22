@@ -7,8 +7,6 @@ import 'package:badges/badges.dart' as badges;
 import '../components/product_list.dart';
 import 'add_to_card.dart';
 import 'extra.dart';
-import 'favdeaital.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -19,7 +17,6 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen> {
   bool check=false;
-
   void RefreshAllData()
   {
     setState(() {
@@ -32,247 +29,239 @@ class _Home_ScreenState extends State<Home_Screen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: const BoxDecoration(
             gradient:
                 RadialGradient(center: Alignment.topLeft, radius: 0.8, colors: [
           Color(0xff484C57),
           Color(0xff1F2125),
         ])),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // App Bar Code
-                Container(
-                  margin: const EdgeInsets.only(top: 30),
-                  width: double.infinity,
-                  height: 80,
-                  color: Colors.transparent,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'PixelsCo.',
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 22,
-                              letterSpacing: 2,
-                              color: Colors.white),
-                        ),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // App Bar Code
+              Container(
+                margin: const EdgeInsets.only(top: 30),
+                width: double.infinity,
+                height: 80,
+                color: Colors.transparent,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'PixelsCo.',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 22,
+                            letterSpacing: 2,
+                            color: Colors.white),
                       ),
-                      Padding(
+                    ),
+                    InkWell(
+                      onTap: () async{
+                        String fine =  await Navigator.push(context,MaterialPageRoute(builder: ((context) => Add_To_Card())));
+                        if(fine=='fine')
+                          {
+                            RefreshAllData();
+                          }
+                      },
+                      child: Padding(
                         padding: const EdgeInsets.only(right: 11),
-                        child: InkWell(
-                          onTap: () async{
-                            String fine =  await Navigator.push(context,MaterialPageRoute(builder: ((context) => Add_To_Card())));
-                            if(fine=='fine')
-                              {
-                                RefreshAllData();
-                              }
-                          },
-                          child: badges.Badge(
-                            badgeAnimation: badges.BadgeAnimation.scale(),
-                            badgeContent: check ? Text(
-                              '${AddToCard.length}',
-                              style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    letterSpacing: 1,
-                                  )),
-                            ) : Text(
-                          '${AddToCard.length}',
+                        child: badges.Badge(
+                          badgeAnimation: badges.BadgeAnimation.scale(),
+                          badgeContent: check ? Text(
+                            '${AddToCard.length}',
                             style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontSize: 14,
-                          letterSpacing: 1,
-                          )),
-                      ),
-                            child: const Icon(
-                              Icons.shopping_bag_outlined,
-                              color: Colors.white,
-                              size: 30,
-                            ),
+                                textStyle: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  letterSpacing: 1,
+                                )),
+                          ) : Text(
+                        '${AddToCard.length}',
+                          style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 14,
+                        letterSpacing: 1,
+                        )),
+                                            ),
+                          child: const Icon(
+                            Icons.shopping_bag_outlined,
+                            color: Colors.white,
+                            size: 30,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+
+                  ],
                 ),
-                // Search Section
-                Container(
-                  child: TextField(
-                    style: GoogleFonts.poppins(
+              ),
+              // Search Section
+              Container(
+                child: TextField(
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  decoration: InputDecoration(
+                    hintText: 'Serach Your Product',
+                    hintStyle: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    decoration: InputDecoration(
-                      hintText: 'Serach Your Product',
-                      hintStyle: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        color: Colors.white,
-                        size: 25,
-                      ),
-                      suffixIcon: const Icon(
-                        Icons.highlight_remove,
-                        color: Colors.white,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                    suffixIcon: const Icon(
+                      Icons.highlight_remove,
+                      color: Colors.white,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                // Hero Container
-                Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  width: double.infinity,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      // boxShadow: [
-                      //   const BoxShadow(
-                      //     color: Colors.black,
-                      //     offset: Offset(0,7)
-                      //       ,
-                      //   )
-                      // ],
-                      border: Border.all(color: Colors.white38, width: 1),
-                      gradient: const LinearGradient(colors: [
-                        Color(0xff484C57),
-                        Color(0xff1D1F23),
-                        Color(0xff1D1F23),
-                      ])),
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "New Vintage\nCollection",
-                              // textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  letterSpacing: 2,
-                                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              // Hero Container
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                width: double.infinity,
+                height: 200,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: Colors.white38, width: 1),
+                    gradient: const LinearGradient(colors: [
+                      Color(0xff484C57),
+                      Color(0xff1D1F23),
+                      Color(0xff1D1F23),
+                    ])),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "New Vintage\nCollection",
+                            // textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: 20,
+                                letterSpacing: 2,
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.of(context).pushNamed('/try');
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 25),
-                                width: 120,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(18),
-                                  border: Border.all(
-                                      color: Colors.white38, width: 1),
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color(0xff32343b),
-                                      Color(0xff1c1e22),
-                                    ],
-                                  ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/try');
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 25),
+                              width: 120,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                border: Border.all(
+                                    color: Colors.white38, width: 1),
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xff32343b),
+                                    Color(0xff1c1e22),
+                                  ],
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    'Explore Now',
-                                    style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                        fontSize: 13,
-                                      ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Explore Now',
+                                  style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          width: 165,
-                          height: 160,
-                          decoration: const BoxDecoration(
-                              // color: Colors.white,
-                              image: DecorationImage(
-                                  image: AssetImage('assets/image/02.png'),
-                                  fit: BoxFit.contain))),
-                      // Image.asset(
-                      //   'assets/image/02.png',
-                      // ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        width: 165,
+                        height: 160,
+                        decoration: const BoxDecoration(
+                            // color: Colors.white,
+                            image: DecorationImage(
+                                image: AssetImage('assets/image/02.png'),
+                                fit: BoxFit.contain))),
+                    // Image.asset(
+                    //   'assets/image/02.png',
+                    // ),
+                  ],
                 ),
-                // Divider(
-                //   height: 40,
-                //   color: Colors.white38,
-                //   thickness: 1,
-                // ),
-                const SizedBox(
-                  height: 10,
+              ),
+              // Divider(
+              //   height: 40,
+              //   color: Colors.white38,
+              //   thickness: 1,
+              // ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Popular',
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontSize: 25,
+                  letterSpacing: 2,
+                )),
+              ),
+              // SizedBox(height: 15,),
+              const Divider(
+                height: 35,
+                color: Colors.white38,
+                thickness: 1,
+              ),
+              Center(
+                child: Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  children: List.generate(
+                      6,
+                      (index) => InkWell(
+                          onTap: () {
+                            setState(() {
+                              Navigator.of(context)
+                                  .pushNamed('/product', arguments: index);
+                            });
+                          },
+                          child: ProductContainer(index))),
                 ),
-                Text(
-                  'Popular',
-                  style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                    fontSize: 25,
-                    letterSpacing: 2,
-                  )),
-                ),
-                // SizedBox(height: 15,),
-                const Divider(
-                  height: 35,
-                  color: Colors.white38,
-                  thickness: 1,
-                ),
-                Center(
-                  child: Wrap(
-                    spacing: 15,
-                    runSpacing: 15,
-                    children: List.generate(
-                        6,
-                        (index) => InkWell(
-                            onTap: () {
-                              setState(() {
-                                Navigator.of(context)
-                                    .pushNamed('/product', arguments: index);
-                              });
-                            },
-                            child: ProductContainer(index))),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -339,6 +328,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                           showCustomToast(context, Icons.favorite_border_rounded,
                               'Product UnLiked Successfully');
                         }
+
                     });
                   },
                   child: check?(UnLikedList[index] ? Fav1() : Fav()):(UnLikedList[index] ? Fav1() : Fav()),

@@ -3,6 +3,7 @@ import 'package:ecommerce_app/home/screen/user/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../components/product_list.dart';
 import '../extra.dart';
 import '../home_screen.dart';
 
@@ -124,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       else if(UserList[i]['user']!=User && UserList[i]['pass']!=pass)
                         {
                           showCustomToast(context, Icons.error_outline,
-                              '>Enter Valid Username/Password');
+                              'Enter Valid Username/Password');
                         }
                       else if(User == '' && pass == '')
                       {
@@ -156,6 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   if(check)
                     {
                       showCustomToast(context,Icons.check_circle,'Login Successfully!');
+                      loginStatus=true;
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (BuildContext context) => Home_Screen(),
@@ -213,6 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               InkWell(
                 onTap: () {
+                  loginStatus=false;
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (BuildContext context) => Home_Screen(),
@@ -242,6 +245,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
 
 bool _passwordVisible=true;

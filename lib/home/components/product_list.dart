@@ -70,3 +70,5 @@ List ProductData = [
 List AddToCard = [];
 List UnLikedList = List.generate(ProductData.length, (index) => false);
 List likedProductList = [];
+
+bool loginStatus=false;

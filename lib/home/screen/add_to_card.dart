@@ -57,6 +57,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         width: double.infinity,
                         height: 80,
                         color: Colors.transparent,
+                        padding: const EdgeInsets.symmetric(horizontal: 11),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -205,7 +206,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           ),
                         ),
                         Text(
-                          '-\$$discount',
+                          '-\$$discount 20%',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -235,7 +236,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           ),
                         ),
                         Text(
-                          '+\$60',
+                          '+\$60.0',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -285,14 +286,31 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       children: [
                         InkWell(
                           onTap: () {
-                            if (AddToCard.length > 0) {
-                              Navigator.of(context).pushNamed('/order');
-                            } else {
-                              showCustomToast(
-                                  context,
-                                  Icons.warning_amber_rounded,
-                                  'Add At Least One Product');
-                            }
+                            // if (AddToCard.length > 0) {
+                            //   Navigator.of(context).pushNamed('/order');
+                            // }
+                            // else {
+                            //   showCustomToast(
+                            //       context,
+                            //       Icons.warning_amber_rounded,
+                            //       'Add At Least One Product');
+                            // }
+                            if(loginStatus && AddToCard.length > 0)
+                              {
+                                Navigator.of(context).pushNamed('/order');
+                              }
+                            else if (loginStatus==false && AddToCard.length > 0)
+                              {
+                                Navigator.of(context).pushNamed('/login');
+                                showCustomToast(context,Icons.check_circle,'You Must Be Logged');
+                              }
+                            else
+                              {
+                                showCustomToast(
+                                    context,
+                                    Icons.warning_amber_rounded,
+                                    'Must Be Add One Product');
+                              }
                           },
                           child: Container(
                             width: 365,
