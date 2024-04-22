@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:ecommerce_app/home/screen/user/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'home_screen.dart';
+import '../../user/login.dart';
+import '../Home Screen/home_screen.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});

@@ -1,12 +1,9 @@
-import 'package:ecommerce_app/home/screen/product_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
-
-import '../components/product_list.dart';
-import 'extra.dart';
-import 'home_screen.dart';
+import '../../utils/extra.dart';
+import '../../utils/product_list.dart';
+import '../Product Details Screen/product_details.dart';
 
 class Add_To_Card extends StatefulWidget {
   const Add_To_Card({super.key});
@@ -176,7 +173,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           ),
                         ),
                         Text(
-                          '\$$iteamtotal',
+                          '\$$iteamtotal.0',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -195,7 +192,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Discount',
+                          'Discount (20%)',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -206,7 +203,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           ),
                         ),
                         Text(
-                          '-\$$discount 20%',
+                          '-\$$discount',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w700,

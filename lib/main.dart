@@ -1,13 +1,13 @@
+import 'package:ecommerce_app/screen/Card%20Screen/add_to_card.dart';
+import 'package:ecommerce_app/screen/Home%20Screen/home_screen.dart';
+import 'package:ecommerce_app/screen/Order%20Placed%20Screen/order_Placed.dart';
+import 'package:ecommerce_app/screen/Product%20Details%20Screen/product_details.dart';
+import 'package:ecommerce_app/screen/Splash%20Screen/splash_screen.dart';
+import 'package:ecommerce_app/screen/WishList%20Screen/book_mark.dart';
+import 'package:ecommerce_app/screen/WishList%20Screen/favdeaital.dart';
+import 'package:ecommerce_app/user/login.dart';
 import 'package:flutter/material.dart';
-import 'home/screen/book_mark.dart';
-import 'home/screen/favdeaital.dart';
-import 'home/screen/home_screen.dart';
-import 'home/screen/order_Placed.dart';
-import 'home/screen/product_details.dart';
-import 'home/screen/splash_screen.dart';
-import 'home/screen/add_to_card.dart';
 import 'package:flutter/services.dart';
-import 'home/screen/user/login.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(

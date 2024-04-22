@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
-import 'extra.dart';
-import '../components/product_list.dart';
-import 'home_screen.dart';
+import '../../utils/extra.dart';
+import '../../utils/product_list.dart';
+import '../Home Screen/home_screen.dart';
 
 
 class Book_Mark extends StatefulWidget {

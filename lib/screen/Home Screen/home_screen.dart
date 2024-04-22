@@ -4,9 +4,9 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
-import '../components/product_list.dart';
-import 'add_to_card.dart';
-import 'extra.dart';
+import '../../utils/product_list.dart';
+import '../Card Screen/add_to_card.dart';
+import '../../utils/extra.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -221,11 +221,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ],
                 ),
               ),
-              // Divider(
-              //   height: 40,
-              //   color: Colors.white38,
-              //   thickness: 1,
-              // ),
               const SizedBox(
                 height: 10,
               ),

@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/home/screen/user/signup_page.dart';
-import 'package:ecommerce_app/home/screen/user/user_data.dart';
+import 'package:ecommerce_app/user/signup_page.dart';
+import 'package:ecommerce_app/user/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../components/product_list.dart';
-import '../extra.dart';
-import '../home_screen.dart';
+import '../screen/Home Screen/home_screen.dart';
+import '../utils/extra.dart';
+import '../utils/product_list.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

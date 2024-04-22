@@ -1,32 +1,32 @@
-import 'package:ecommerce_app/home/components/product_list.dart';
+import 'package:ecommerce_app/utils/product_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 
-import 'extra.dart';
-import 'home_screen.dart';
+import '../../utils/extra.dart';
+import '../Home Screen/home_screen.dart';
 
-class Fav_Page extends StatefulWidget {
-  const Fav_Page({super.key});
+class Products_details_Page extends StatefulWidget {
+  const Products_details_Page({super.key});
 
   @override
-  State<Fav_Page> createState() => _Fav_PageState();
+  State<Products_details_Page> createState() => _Products_details_PageState();
 }
 
-class _Fav_PageState extends State<Fav_Page> {
+class _Products_details_PageState extends State<Products_details_Page> {
+  bool check=false;
   @override
   Widget build(BuildContext context) {
     var index = ModalRoute.of(context)!.settings.arguments as int;
-
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
           gradient:
-          RadialGradient(center: Alignment.topRight, radius: 1, colors: [
+              RadialGradient(center: Alignment.topRight, radius: 1, colors: [
             Color(0xff32343b),
             Color(0xff1c1e22),
           ]),
@@ -46,7 +46,7 @@ class _Fav_PageState extends State<Fav_Page> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pop();
+                          Navigator.pop(context, 'fine');
                       },
                       child: Icon(
                         Icons.arrow_back_ios_rounded,
@@ -57,35 +57,32 @@ class _Fav_PageState extends State<Fav_Page> {
                     Text(
                       'Product Details',
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 22,
                             letterSpacing: 2,
                             color: Colors.white),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 11),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/card');
-                        },
-                        child: badges.Badge(
-                          badgeContent: Text(
-                            '${AddToCard.length}',
-                            style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                )),
-                          ),
-                          child: Icon(
-                            Icons.shopping_bag_outlined,
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/card');
+                      },
+                      child: badges.Badge(
+                        badgeContent: Text(
+                          '${AddToCard.length}',
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                            fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            size: 30,
-                          ),
+                            fontSize: 14,
+                            letterSpacing: 1,
+                          )),
+                        ),
+                        child: Icon(
+                          Icons.shopping_bag_outlined,
+                          color: Colors.white,
+                          size: 30,
                         ),
                       ),
                     ),
@@ -98,7 +95,7 @@ class _Fav_PageState extends State<Fav_Page> {
                 width: 300,
                 margin: EdgeInsets.only(bottom: 50),
                 decoration: BoxDecoration(
-                  // color: Colors.white,
+                    // color: Colors.white,
                     image: DecorationImage(
                         alignment: Alignment.center,
                         image: AssetImage(ProductData[index]['link']),
@@ -111,9 +108,9 @@ class _Fav_PageState extends State<Fav_Page> {
               height: 435,
               decoration: BoxDecoration(
                   border: Border(
-                      top: BorderSide(color: Colors.white38, width: 3),
-                      left: BorderSide(color: Colors.white38, width: 3),
-                      right: BorderSide(color: Colors.white38, width: 3)),
+                      top: BorderSide(color: Colors.white38, width: 1),
+                      left: BorderSide(color: Colors.white38, width: 1),
+                      right: BorderSide(color: Colors.white38, width: 1)),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40)),
@@ -153,7 +150,7 @@ class _Fav_PageState extends State<Fav_Page> {
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                               fontSize: 22,
-                              letterSpacing: 1,
+                              letterSpacing: 1.5,
                             ),
                           ),
                         ),
@@ -191,16 +188,16 @@ class _Fav_PageState extends State<Fav_Page> {
                               '${ProductData[index]['quantity']}',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    letterSpacing: 1,
-                                  )),
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: 22,
+                                letterSpacing: 1,
+                              )),
                             ),
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  if (1 < AddToCard[index]['quantity']) {
+                                  if (1<ProductData[index]['quantity']) {
                                     ProductData[index]['quantity']--;
                                   }
                                 });
@@ -245,19 +242,19 @@ class _Fav_PageState extends State<Fav_Page> {
                           ' 4.5',
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontSize: 18,
-                              )),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontSize: 18,
+                          )),
                         ),
                         Text(
                           ' (500 reviews)',
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white38,
-                                fontSize: 15,
-                              )),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white38,
+                            fontSize: 15,
+                          )),
                         ),
                       ],
                     ),
@@ -268,7 +265,7 @@ class _Fav_PageState extends State<Fav_Page> {
                       ProductData[index]['description'],
                       style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                            // overflow: TextOverflow.clip,
+                              // overflow: TextOverflow.clip,
                               fontWeight: FontWeight.w500,
                               color: Colors.white54,
                               fontSize: 15,
@@ -303,7 +300,7 @@ class _Fav_PageState extends State<Fav_Page> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border:
-                              Border.all(color: Colors.white38, width: 2),
+                                  Border.all(color: Colors.white38, width: 1),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -336,7 +333,7 @@ class _Fav_PageState extends State<Fav_Page> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border:
-                              Border.all(color: Colors.white38, width: 2),
+                                  Border.all(color: Colors.white38, width: 1),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
@@ -386,4 +383,3 @@ class _Fav_PageState extends State<Fav_Page> {
 }
 
 int productquantity = 1;
-bool check=false;

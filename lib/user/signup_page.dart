@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/home/screen/user/user_data.dart';
+import 'package:ecommerce_app/user/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../extra.dart';
-import '../home_screen.dart';
+
+import '../utils/extra.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
