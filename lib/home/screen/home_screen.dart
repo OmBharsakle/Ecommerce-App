@@ -239,12 +239,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   letterSpacing: 2,
                 )),
               ),
-              // SizedBox(height: 15,),
-              const Divider(
-                height: 35,
-                color: Colors.white38,
-                thickness: 1,
-              ),
+              SizedBox(height: 15,),
               Center(
                 child: Wrap(
                   spacing: 15,
