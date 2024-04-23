@@ -34,7 +34,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient:
                 RadialGradient(center: Alignment.topLeft, radius: 1, colors: [
           Color(0xff32343b),
@@ -50,7 +50,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                     children: [
                       // Card Box
                       Container(
-                        margin: EdgeInsets.only(top: 30),
+                        margin: const EdgeInsets.only(top: 30),
                         width: double.infinity,
                         height: 80,
                         color: Colors.transparent,
@@ -62,7 +62,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                               onTap: () {
                                 Navigator.pop(context, 'fine');
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_ios_rounded,
                                 color: Colors.white,
                                 size: 25,
@@ -86,14 +86,14 @@ class _Add_To_CardState extends State<Add_To_Card> {
                                 badgeContent: Text(
                                   '${likedProductList.length}',
                                   style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
+                                      textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                     fontSize: 14,
                                     letterSpacing: 1,
                                   )),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.bookmark_add_outlined,
                                   color: Colors.white,
                                   size: 30,
@@ -119,7 +119,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
             Container(
               width: double.infinity,
               height: 280,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                     top: BorderSide(color: Colors.white38, width: 1),
                     left: BorderSide(color: Colors.white38, width: 1),
@@ -141,13 +141,13 @@ class _Add_To_CardState extends State<Add_To_Card> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
                       'Price Details',
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                           fontSize: 22,
@@ -155,7 +155,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -164,7 +164,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           'Price (${AddToCard.length} Items)',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white60,
                               fontSize: 15,
@@ -175,7 +175,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           '\$$iteamtotal.0',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white60,
                               fontSize: 17,
@@ -185,7 +185,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -194,7 +194,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           'Discount (20%)',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white60,
                               fontSize: 15,
@@ -205,7 +205,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           '-\$$discount',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white60,
                               fontSize: 17,
@@ -215,7 +215,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -224,7 +224,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           'Delivery Charges',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white60,
                               fontSize: 15,
@@ -235,7 +235,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           '+\$60.0',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white60,
                               fontSize: 17,
@@ -245,7 +245,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -254,7 +254,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           'Total Amount',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white70,
                               fontSize: 18,
@@ -265,7 +265,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         Text(
                           '\$${subtotal}',
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white70,
                               fontSize: 19,
@@ -275,7 +275,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 18,
                     ),
                     Row(
@@ -283,22 +283,14 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       children: [
                         InkWell(
                           onTap: () {
-                            // if (AddToCard.length > 0) {
-                            //   Navigator.of(context).pushNamed('/order');
-                            // }
-                            // else {
-                            //   showCustomToast(
-                            //       context,
-                            //       Icons.warning_amber_rounded,
-                            //       'Add At Least One Product');
-                            // }
                             if(loginStatus && AddToCard.length > 0)
                               {
                                 Navigator.of(context).pushNamed('/order');
                               }
                             else if (loginStatus==false && AddToCard.length > 0)
                               {
-                                Navigator.of(context).pushNamed('/login');
+                                loginStatus=true;
+                                Navigator.of(context).pushNamed('/login',);
                                 showCustomToast(context,Icons.check_circle,'You Must Be Logged');
                               }
                             else
@@ -316,7 +308,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                               borderRadius: BorderRadius.circular(20),
                               border:
                                   Border.all(color: Colors.white38, width: 1),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [
                                   Color(0xff32343b),
                                   Color(0xff1c1e22),
@@ -327,7 +319,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                               child: Text(
                                 'Place Order',
                                 style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white,
                                     fontSize: 19,
@@ -352,13 +344,13 @@ class _Add_To_CardState extends State<Add_To_Card> {
 
   Container Add_To_Card_Product(int index) {
     return Container(
-      margin: EdgeInsets.only(bottom: 15),
+      margin: const EdgeInsets.only(bottom: 15),
       width: double.infinity,
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.white38, width: 1),
-        gradient: RadialGradient(
+        gradient: const RadialGradient(
           center: Alignment.topLeft,
           radius: 1,
           colors: [
@@ -386,7 +378,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                 children: [
                   Text(
                     AddToCard[index]['name'],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontFamily: 'cashDisplay',
                       color: Colors.white,
@@ -394,20 +386,20 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       letterSpacing: 1,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
                   Text(
                     '\$${AddToCard[index]['price']}',
                     style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
                       fontSize: 18,
                       letterSpacing: 1,
                     )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -419,21 +411,21 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.only(right: 13),
+                          margin: const EdgeInsets.only(right: 13),
                           height: 30,
                           width: 30,
                           decoration: BoxDecoration(
                               border:
                                   Border.all(color: Colors.white38, width: 1),
                               borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
                                     Color(0xff555861),
                                     Colors.black38,
                                   ])),
-                          child: Icon(
+                          child: const Icon(
                             Icons.add,
                             color: Colors.white,
                             size: 20,
@@ -443,7 +435,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                       Text(
                         '${AddToCard[index]['quantity']}',
                         style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                           fontSize: 20,
@@ -459,28 +451,28 @@ class _Add_To_CardState extends State<Add_To_Card> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.only(left: 13),
+                          margin: const EdgeInsets.only(left: 13),
                           height: 30,
                           width: 30,
                           decoration: BoxDecoration(
                               border:
                                   Border.all(color: Colors.white38, width: 1),
                               borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
                                     Color(0xff555861),
                                     Colors.black38,
                                   ])),
-                          child: Icon(
+                          child: const Icon(
                             Icons.remove,
                             color: Colors.white,
                             size: 20,
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 80,
                       ),
                       InkWell(
@@ -491,7 +483,7 @@ class _Add_To_CardState extends State<Add_To_Card> {
                             AddToCard.removeAt(index);
                           });
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.delete_forever_rounded,
                           color: Colors.white,
                           size: 35,

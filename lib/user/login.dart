@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/screen/Card%20Screen/add_to_card.dart';
+import 'package:ecommerce_app/screen/Order%20Placed%20Screen/order_Placed.dart';
 import 'package:ecommerce_app/user/signup_page.dart';
 import 'package:ecommerce_app/user/user_data.dart';
 import 'package:flutter/material.dart';
@@ -153,16 +155,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
 
                     }
-
                   if(check)
                     {
-                      showCustomToast(context,Icons.check_circle,'Login Successfully!');
-                      loginStatus=true;
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => Home_Screen(),
-                        ),
-                      );
+                      if(loginStatus)
+                        {
+                          showCustomToast(context,Icons.check_circle,'Place Order Now');
+                          loginStatus=true;
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => Add_To_Card(),
+                            ),
+                          );
+                        }
+                      else
+                        {
+                          showCustomToast(context,Icons.check_circle,'Login Successfully!');
+                          loginStatus=true;
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => Home_Screen(),
+                            ),
+                          );
+                        }
                     }
                 },
                 child: Container(

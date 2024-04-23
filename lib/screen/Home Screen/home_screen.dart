@@ -258,9 +258,10 @@ class _Home_ScreenState extends State<Home_Screen> {
     );
   }
 
+
   Container ProductContainer(int index) {
     return Container(
-      width: 175,
+      width: 178,
       height: 290,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
@@ -300,7 +301,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   )),
                 ),
                 const SizedBox(
-                  width: 89,
+                  width: 92,
                 ),
                 InkWell(
                   onTap: () {

@@ -41,12 +41,12 @@ class _Fav_PageState extends State<Fav_Page> {
                 width: double.infinity,
                 height: 80,
                 color: Colors.transparent,
-                child: Row(
+                child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pop();
+                        Navigator.pop(context, 'fine');
                       },
                       child: Icon(
                         Icons.arrow_back_ios_rounded,
@@ -57,35 +57,32 @@ class _Fav_PageState extends State<Fav_Page> {
                     Text(
                       'Product Details',
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 22,
                             letterSpacing: 2,
                             color: Colors.white),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 11),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/card');
-                        },
-                        child: badges.Badge(
-                          badgeContent: Text(
-                            '${AddToCard.length}',
-                            style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                )),
-                          ),
-                          child: Icon(
-                            Icons.shopping_bag_outlined,
-                            color: Colors.white,
-                            size: 30,
-                          ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/card');
+                      },
+                      child: badges.Badge(
+                        badgeContent: Text(
+                          '${AddToCard.length}',
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: 14,
+                                letterSpacing: 1,
+                              )),
+                        ),
+                        child: Icon(
+                          Icons.shopping_bag_outlined,
+                          color: Colors.white,
+                          size: 30,
                         ),
                       ),
                     ),
